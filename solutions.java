@@ -1,3 +1,35 @@
+// Problem #1: Sort colors (0, 1, 2)
+// Time Complexity:  O(N)
+// Space Complexity: O(1)
+// Algorithm: 3 pointer approach with low for 0, mid for 1 and high for 2
+class Solution {
+    public void sortColors(int[] nums) {
+        int n = nums.length;
+        int low = 0, mid = n-1, high = n-1;
+
+        while(mid >=  low){
+            if (nums[mid] == 2){
+                swap(nums, mid, high);
+                high--;
+                mid--;
+            }
+            else if (nums[mid] == 0){
+                swap(nums, mid, low);
+                low++;
+            }
+            else{
+                mid--;
+            }
+        }
+    }
+
+    private void swap(int[] nums, int i, int j){
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+}
+
 // Problem #2: 3 Sum
 // Time Complexity:  O(N logN) (sort) + O(N^2 LogN) (loop through list for each number + binary search) --> O(N2 LogN) 
 // Space Complexity: O(1)
